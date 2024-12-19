@@ -7,14 +7,14 @@ export const register = async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    return res.json({ success: false, message: "Missing Details" });
+    return res.json({ success: false, message: "Missing details" });
   }
 
   try {
     const existingUser = await userModel.findOne({ email });
 
     if (existingUser) {
-      return res.json({ success: false, message: "User Already Exists" });
+      return res.json({ success: false, message: "User already exists" });
     }
 
     const hashedPassword = await bycrypt.hash(password, 10);
@@ -38,7 +38,7 @@ export const register = async (req, res) => {
       from: process.env.SENDER_EMAIL,
       to: email,
       subject: "Welcome to Elysée DEV",
-      text: `Welcome to elyseedev website. Your account has been created with email id: ${email}`,
+      text: `Welcome to elyséedev website. Your account has been created with email id: ${email}`,
     };
 
     await transporter.sendMail(mailOptions);
@@ -111,7 +111,7 @@ export const sendVerifyOtp = async (req, res) => {
     const user = await userModel.findById(userId);
 
     if (user.isAccountVerified) {
-      return res.json({ success: false, message: "Account Already Verified" });
+      return res.json({ success: false, message: "Account already verified" });
     }
 
     const otp = String(Math.floor(100000 + Math.random() * 900000));
@@ -130,7 +130,7 @@ export const sendVerifyOtp = async (req, res) => {
 
     await transporter.sendMail(mailOptions);
 
-    res.json({ success: true, message: "Verification OTP Sent Email" });
+    res.json({ success: true, message: "Verification OTP sent to your email" });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }
@@ -143,7 +143,7 @@ export const verifyEmail = async (req, res) => {
   if (!userId || !otp) {
     return res.json({
       success: false,
-      message: "Missing Details",
+      message: "Missing details",
     });
   }
 
@@ -151,7 +151,7 @@ export const verifyEmail = async (req, res) => {
     const user = await userModel.findById(userId);
 
     if (!user) {
-      return res.json({ success: false, message: "User Not Found" });
+      return res.json({ success: false, message: "User not found" });
     }
 
     if (user.verifyOtp === "" || user.verifyOtp !== otp) {
@@ -168,7 +168,7 @@ export const verifyEmail = async (req, res) => {
 
     await user.save();
 
-    return res.json({ success: true, message: "Email Verified Successfully" });
+    return res.json({ success: true, message: "Email verified successfully" });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }
@@ -198,7 +198,7 @@ export const sendResetOtp = async (req, res) => {
     const user = await userModel.findOne({ email });
 
     if (!user) {
-      return res.json({ success: false, message: "User Not Found" });
+      return res.json({ success: false, message: "User not found" });
     }
 
     const otp = String(Math.floor(100000 + Math.random() * 900000));
@@ -212,7 +212,7 @@ export const sendResetOtp = async (req, res) => {
       from: process.env.SENDER_EMAIL,
       to: user.email,
       subject: "Password Reset OTP",
-      text: `Your OTP ifor resetting your password is ${otp}. Use this OTP to proceed with resetting your password.`,
+      text: `Your OTP for resetting your password is ${otp}. Use this OTP to proceed with resetting your password.`,
     };
 
     await transporter.sendMail(mailOptions);
@@ -259,7 +259,7 @@ export const resetPassword = async (req, res) => {
 
     return res.json({
       success: true,
-      message: "Password has been Reset Successfully",
+      message: "Password has been reset successfully",
     });
   } catch (error) {
     return res.json({ success: false, message: error.message });
