@@ -5,6 +5,15 @@ A complete Authentication system that includes Email Verification and Password R
 
 </div><br /><hr /><br />
 
+<div align="center">
+
+## LIVE - DEMO 🌐
+  
+**UI** 👉 [LINK](https://mern-auth-client-seven.vercel.app/)
+</div>
+
+<br/><hr/><br/>
+
 ## Project Overview
 This project is a **complete Authentication System** that includes the following features:
 - **Email Verification**: Securely verify user email addresses.
@@ -168,6 +177,7 @@ For any questions or support, please contact:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/niyibizi-elys%C3%A9e/) [![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Niyibizi_Elyse) [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/elyse502)
 
 <br /><hr /><br />
+
 
 
 
