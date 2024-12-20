@@ -14,12 +14,11 @@ connectDB();
 const allowedOrigins = [
   "http://localhost:5173",
   "https://mern-auth-client-seven.vercel.app",
-  "https://vercel.live",
 ];
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: allowedOrigins, credentials: true, domain: null }));
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 // API Endpoints
 app.get("/", (req, res) => res.send("API Working"));
